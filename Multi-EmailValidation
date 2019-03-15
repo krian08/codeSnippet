@@ -1,0 +1,33 @@
+import java.util.regex.Pattern;
+import java.util.regex.Matcher;
+
+
+public class testString {
+
+	private static Pattern pattern;
+	private static Matcher matcher;
+	
+	public static String regex = 
+        "(([A-Za-z0-9_\\-\\.])+\\@([A-Za-z0-9_\\-\\.])+\\.([A-Za-z]{2,4}))(((;|,|; | ;| ; | , | ,){1}"
+        +"([A-Za-z0-9_\\-\\.])+\\@([A-Za-z0-9_\\-\\.])+\\.([A-Za-z]{2,4}))*)";
+	
+	public static void main(String[] args) {
+	    String Contactemail = "billgates@badmicrosoft.com,noreply@badmicrosoft.combillgates@badmicrosoft.com;noreply@badmicrosoft.com";        
+	    //String Contactemail = "billgates@badmicrosoft.com,noreply@badmicrosoft.combillgates.com;noreply@badmicrosoft.com";
+	    boolean isvalid=true;
+	     String re2 = "(\\;|\\,)";          // ,; delimated enail split
+ 	     String[] arrayOfBars = Contactemail.split(re2);
+	    for (int i=0;i<arrayOfBars.length;i++)
+	    {
+	    	 if(!Pattern.matches(regex, arrayOfBars[i]))
+	    	 {
+	    		 System.out.println(arrayOfBars[i]+"NOT VALID");
+	    		 isvalid=false;
+	    		 break;
+	    	 }	    	
+	    } 
+	    System.out.println(isvalid);
+	    //return isvalid;
+	}
+
+}
